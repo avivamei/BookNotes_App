@@ -1,8 +1,10 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-//represents notes taken on a book
+// Represents notes about a book
 public class Notes {
     private String heading;
     private String notes;
