@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
     private Book testBook;
-    private Notes note;
 
     @BeforeEach
     public void setUp() {
@@ -34,8 +33,48 @@ class BookTest {
 
     @Test
     public void testAddNotes() {
-        note = new Notes("heading1", "notes1");
+        assertTrue(testBook.getNotesList().isEmpty());
+
+        Notes note = new Notes("heading", "notes");
         testBook.addNotes(note);
-        assertTrue(testBook.containsNote(note));
+
+        assertFalse(testBook.getNotesList().isEmpty());
+        assertEquals("heading", note.getHeading());
+        assertEquals("notes", note.getNotes());
+    }
+
+    @Test
+    public void testRemoveNotesEmpty() {
+        assertFalse(testBook.removeNotes("heading"));
+    }
+
+    @Test
+    public void testRemoveBookNotEmpty() {
+        testBook.addNotes(new Notes("heading 1", "notes 1"));
+        testBook.addNotes(new Notes("heading 2", "notes 2"));
+
+        assertFalse(testBook.removeNotes("heading 3"));
+
+        assertTrue(testBook.removeNotes("heading 1"));
+        assertEquals(1, testBook.getNotesList().size());
+
+        assertTrue(testBook.removeNotes("heading 2"));
+        assertTrue(testBook.getNotesList().isEmpty());
+    }
+
+    @Test
+    public void testSelectCategoryEmpty() {
+        assertNull(testBook.selectNote("heading"));
+    }
+
+    @Test
+    public void testSelectCategoryNotEmpty() {
+        Notes note1 = new Notes("heading 1", "notes 1");
+        Notes note2 = new Notes("heading 2", "notes 2");
+        testBook.addNotes(note1);
+        testBook.addNotes(note2);
+
+        assertEquals(note1, testBook.selectNote("heading 1"));
+        assertEquals(note2, testBook.selectNote("heading 2"));
     }
 }

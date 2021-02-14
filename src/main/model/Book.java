@@ -44,30 +44,40 @@ public class Book {
         return genre;
     }
 
+    //EFFECTS: returns a list of notes in the book
+    public List<Notes> getNotesList() {
+        return notesList;
+    }
+
+    //REQUIRES: note must not already be in bookshelf
+    //MODIFIES: this
+    //EFFECTS: adds a note to book
     public void addNotes(Notes notes) {
         this.notesList.add(notes);
     }
 
-    public void removeNotes(Notes notes) {
-        this.notesList.remove(notes);
+    //MODIFIES: this
+    //EFFECTS: if there exists is a note with the inputted heading in the book,
+    // remove the note and return true, otherwise return false
+    public boolean removeNotes(String heading) {
+        for (Notes note : notesList) {
+            if (note.getHeading().equals(heading)) {
+                notesList.remove(note);
+                return true;
+            }
+        }
+        return false;
     }
 
-    //EFFECTS: gets the notes at position x from bookshelf
-    public Notes getNotes(int i) {
-        return notesList.get(i);
-    }
-
-    public Boolean containsNote(Notes notes) {
-        return notesList.contains(notes);
-    }
-
-    public void updateNotes(int i, String heading, String notes) {
-        Notes note = getNotes(i);
-        note.setHeading(heading);
-        note.setNotes(notes);
-    }
-
-    public boolean containsTitle(String title) {
-        return this.title.equals(title);
+    //MODIFIES: this
+    //EFFECTS: if there exists a note with the inputted heading in the book,
+    // return the note, otherwise return null
+    public Notes selectNote(String heading) {
+        for (Notes note : notesList) {
+            if (note.getHeading().equals(heading)) {
+                return note;
+            }
+        }
+        return null;
     }
 }

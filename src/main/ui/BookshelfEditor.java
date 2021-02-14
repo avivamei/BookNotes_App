@@ -44,36 +44,28 @@ public class BookshelfEditor {
     public void addOrRemoveBookMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add a book");
-        System.out.println("\tr -> remove a book");
+        System.out.println("\ts -> select a book to view");
         System.out.println("\tq -> quit");
     }
 
     public void processCommand(String command) {
         if (command.equals("a")) {
             addBook();
-        } else if (command.equals("r")) {
-            removeBook();
-        } else if (command.equals("s")) {
-            seeBookTitles();
+//        } else if (command.equals("u")) {
+//            updateBook();
         } else {
             System.out.println("Selection not valid");
         }
     }
 
+//    private void updateBook() {
+//        bookShelf.updateBook();
+//    }
+
     public void addBook() {
         bookShelf.addBook(null);
         BookEditor book = new BookEditor();
         book.createBook();
-    }
-
-    public void removeBook() {
-        System.out.println("What is the title of the book you want to remove?");
-        String selection = input.nextLine();
-        bookShelf.removeBook(selection);
-    }
-
-    public void seeBookTitles() {
-        bookShelf.getBookTitles();
     }
 
 }
