@@ -34,14 +34,14 @@ public class BookshelfEditor {
             if (command.equals("q")) {
                 keepGoing = false;
             } else {
-                processCommand(command);
+                processBookshelfCommand(command);
             }
         }
 
         System.out.println("finished");
     }
 
-    //EFFECTS: displays options to users
+    //EFFECTS: displays options to perform on bookshelf to users
     public void bookshelfMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\ta = add a book");
@@ -51,8 +51,8 @@ public class BookshelfEditor {
     }
 
     //MODIFIES: this
-    //EFFECTS: processes user command
-    public void processCommand(String command) {
+    //EFFECTS: processes user command to do with editing bookshelf
+    public void processBookshelfCommand(String command) {
         switch (command) {
             case "a":
                 addBook();
@@ -120,20 +120,44 @@ public class BookshelfEditor {
     }
 
     //MODIFIES: this
-    //EFFECTS: processes whether or not the user wants to add or remove notes from selected book
+    //EFFECTS: displays options to perform on a book to users
     public void notesMenu(Book selectedBook) {
         input = new Scanner(System.in);
 
         System.out.println("\nSelect from:");
+        System.out.println("\tv = view book");
         System.out.println("\ta = add notes");
         System.out.println("\tr = remove notes");
         System.out.println("\tb = go back");
 
-        if (input.next().equals("a")) {
-            addNotes(selectedBook);
-        } else if (input.next().equals("r")) {
-            removeNotes(selectedBook);
+        String command = input.nextLine();
+
+        processBookCommands(command, selectedBook);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: processes commands to do with books
+    private void processBookCommands(String command, Book selectedBook) {
+        switch (command) {
+            case "v":
+                viewBook(selectedBook);
+                break;
+            case "r":
+                removeNotes(selectedBook);
+                break;
+            case "a":
+                addNotes(selectedBook);
+                break;
         }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: tells the user who is the author and what is the genre of the selected book
+    private void viewBook(Book selectedBook) {
+        String title = selectedBook.getTitle();
+        String genre = selectedBook.getGenre();
+        System.out.println("The author is: " + title);
+        System.out.println("The genre is: " + genre);
     }
 
     //MODIFIES: this
