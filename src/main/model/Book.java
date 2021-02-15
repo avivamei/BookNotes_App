@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 // Represents a book that contains a list of notes taken about the book
 public class Book {
@@ -11,7 +10,7 @@ public class Book {
     private String genre;
     private List<Notes> notesList;
 
-    //REQUIRES: bookName has a non-zero length
+    //REQUIRES: title, author, and genre has a non-zero length
     //EFFECTS: constructs a book with given title, author, and genre
     public Book(String title, String author, String genre) {
         this.title = title;
@@ -20,26 +19,32 @@ public class Book {
         notesList = new ArrayList<>();
     }
 
+    //EFFECTS: sets the title of a book
     public void setTitle(String title) {
         this.title = title;
     }
 
+    //EFFECTS: sets the author of a book
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    //EFFECTS: sets the genre of a book
     public void setGenre(String genre) {
         this.genre = genre;
     }
 
+    //EFFECTS: returns the title of a book
     public String getTitle() {
         return title;
     }
 
+    //EFFECTS: returns the author of a book
     public String getAuthor() {
         return author;
     }
 
+    //EFFECTS: returns the genre of a book
     public String getGenre() {
         return genre;
     }

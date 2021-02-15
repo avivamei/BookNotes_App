@@ -13,6 +13,6 @@ The bookshelf application allows people to engage with the reading material beyo
 
 ### User stories:
 - As a user, I want to add a book to my bookshelf
-- As a user, I want to add notes to my books
 - As a user, I want to remove a book to my bookshelf
-- As a user, I want to view a list of the titles of the books in my bookshelf
+- As a user, I want to select a book and add notes to it
+- As a user, I want to select a book and remove notes from it

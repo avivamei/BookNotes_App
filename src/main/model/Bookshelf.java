@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jdk.nashorn.internal.objects.Global.print;
-
 // Represents a bookshelf with a list of books
 public class Bookshelf {
     private List<Book> bookList;
@@ -27,19 +25,6 @@ public class Bookshelf {
     }
 
     //MODIFIES: this
-    //EFFECTS: if there exists is a book with the inputted title in the bookshelf,
-    // remove the book and return true, otherwise return false
-    public boolean removeBook(String title) {
-        for (Book book : bookList) {
-            if (book.getTitle().equals(title)) {
-                bookList.remove(book);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //MODIFIES: this
     //EFFECTS: if there exists a book with the inputted title in the bookshelf,
     // return the book, otherwise return null
     public Book selectBook(String title) {
@@ -49,5 +34,12 @@ public class Bookshelf {
             }
         }
         return null;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: if there exists is a book with the inputted title in the bookshelf,
+    // remove the book and return true, otherwise return false
+    public boolean removeBook(String title) {
+        return bookList.removeIf(book -> book.getTitle().equals(title));
     }
 }
