@@ -23,12 +23,9 @@ public class Bookshelf implements Writable {
         return bookList;
     }
 
+    //EFFECTS: returns name of bookshelf
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     //REQUIRES: book must not already be in bookshelf
