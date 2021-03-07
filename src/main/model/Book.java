@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a book that contains a list of notes taken about the book
-public class Book {
+public class Book implements Writable {
     private String title;
     private String author;
     private String genre;
@@ -84,5 +88,26 @@ public class Book {
             }
         }
         return null;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("author", author);
+        json.put("genre", genre);
+        json.put("notes", notesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns expenses in this category as a JSON array
+    private JSONArray notesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Notes note : notesList) {
+            jsonArray.put(note.toJson());
+        }
+
+        return jsonArray;
     }
 }

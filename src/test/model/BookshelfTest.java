@@ -14,7 +14,7 @@ public class BookshelfTest {
 
     @BeforeEach
     public void setUp() {
-        testBookshelf = new Bookshelf();
+        testBookshelf = new Bookshelf("bookshelf");
     }
 
     @Test

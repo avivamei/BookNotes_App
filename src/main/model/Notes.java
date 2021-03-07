@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents notes about a book
-public class Notes {
+public class Notes implements Writable {
     private String heading;
     private String notes;
 
@@ -30,5 +33,13 @@ public class Notes {
     //EFFECTS: returns the contents of a note
     public String getNotes() {
         return notes;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("heading", heading);
+        json.put("notes", notes);
+        return json;
     }
 }

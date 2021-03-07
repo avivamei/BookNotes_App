@@ -3,6 +3,8 @@ package ui;
 import model.Book;
 import model.Bookshelf;
 import model.Notes;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,11 +12,16 @@ import java.util.Scanner;
 // Represents a bookshelf application
 // Parts of code from TellerApp was used
 public class BookshelfEditor {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Bookshelf bookShelf;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the bookshelf app
     public BookshelfEditor() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runBookshelf();
     }
 
@@ -24,7 +31,11 @@ public class BookshelfEditor {
         boolean keepGoing = true;
         String command = null;
 
-        bookShelf = new Bookshelf();
+        System.out.print("Bookshelf Name: ");
+        Scanner input = new Scanner(System.in);
+        String name = input.nextLine();
+        bookShelf = new Bookshelf(name);
+
         input = new Scanner(System.in);
 
         while (keepGoing) {
