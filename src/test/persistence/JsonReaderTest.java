@@ -23,8 +23,8 @@ public class JsonReaderTest extends JsonTest{
     }
 
     @Test
-    public void testReadEmptyBookshelf() {
-        JsonReader reader = new JsonReader("./data/testReadEmptyBookshelf.json");
+    public void testReaderEmptyBookshelf() {
+        JsonReader reader = new JsonReader("./data/testReaderEmptyBookshelf.json");
         try {
             Bookshelf emptyBookshelf = reader.read();
             assertEquals("", emptyBookshelf.getName());

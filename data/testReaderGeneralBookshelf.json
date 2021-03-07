@@ -1,6 +1,6 @@
 {
   "name": "my bookshelf",
-  "books": [
+  "bookList": [
     {
       "title": "book1",
       "author": "author1",
