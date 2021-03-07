@@ -39,10 +39,8 @@ public class JsonTest {
 
     protected void checkBooks(List<Book> books, List<Book> actualBooks) {
         assertEquals(books.size(), actualBooks.size());
-        for (Book book : books) {
-            for (Book actualBook : actualBooks) {
-                checkBook(book, actualBook);
-            }
+        for (int i = 0; i < books.size(); i++){
+            checkBook(books.get(i), actualBooks.get(i));
         }
     }
 
@@ -54,10 +52,8 @@ public class JsonTest {
 
     protected void checkNotes(List<Notes> notes, List<Notes> actualNotes) {
         assertEquals(notes.size(), actualNotes.size());
-        for (Notes note : notes) {
-            for (Notes actualNote : actualNotes) {
-                checkNote(note, actualNote);
-            }
+        for (int i = 0; i < notes.size(); i++) {
+            checkNote(notes.get(i), actualNotes.get(i));
         }
     }
 
