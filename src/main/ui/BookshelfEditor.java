@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 // Represents a bookshelf application
-// Parts of code from TellerApp was used
+// Modelled parts of code from TellerApp in sample application
 public class BookshelfEditor {
     private static final String JSON_STORE = "./data/workroom.json";
     private Bookshelf bookShelf;

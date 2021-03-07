@@ -1,0 +1,31 @@
+{
+  "name": "my bookshelf",
+  "books": [
+    {
+      "title": "book1",
+      "author": "author1",
+      "genre": "genre1",
+      "notes": [
+        {
+          "heading": "summary",
+          "notes": "notes1"
+        },
+        {
+          "heading": "quotes",
+          "notes": "notes2"
+        }
+      ]
+    },
+    {
+      "title": "book2",
+      "author": "author2",
+      "genre": "genre2",
+      "notes": [
+        {
+          "heading": "characters",
+          "notes": "notes3"
+        }
+        ]
+    }
+  ]
+}
