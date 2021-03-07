@@ -4,6 +4,7 @@ import model.Book;
 import model.Bookshelf;
 import model.Notes;
 
+import java.util.List;
 import java.util.Scanner;
 
 // Represents a bookshelf application
@@ -47,6 +48,7 @@ public class BookshelfEditor {
         System.out.println("\ta = add a book");
         System.out.println("\tr = remove a book");
         System.out.println("\ts = select a book");
+        System.out.println("\tv = view all books");
         System.out.println("\tq = quit");
     }
 
@@ -63,9 +65,18 @@ public class BookshelfEditor {
             case "s":
                 selectBook();
                 break;
+            case "v" :
+                viewBooks();
+                break;
             default:
                 System.out.println("Selection not valid");
                 break;
+        }
+    }
+
+    private void viewBooks() {
+        for (Book book : bookShelf.getBookList()) {
+            System.out.println(book.getTitle());
         }
     }
 
@@ -125,7 +136,7 @@ public class BookshelfEditor {
         input = new Scanner(System.in);
 
         System.out.println("\nSelect from:");
-        System.out.println("\tv = view book");
+        System.out.println("\tv = view book details");
         System.out.println("\ta = add notes");
         System.out.println("\tr = remove notes");
         System.out.println("\tb = go back");
@@ -158,6 +169,10 @@ public class BookshelfEditor {
         String genre = selectedBook.getGenre();
         System.out.println("The author is: " + title);
         System.out.println("The genre is: " + genre);
+        for (Notes note : selectedBook.getNotesList()) {
+            System.out.println(note.getHeading());
+            System.out.println(note.getNotes());
+        }
     }
 
     //MODIFIES: this

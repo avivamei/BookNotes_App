@@ -26,3 +26,5 @@ The intended audience includes avid readers and anyone who would like to keep tr
 - As a user, I want to select a book and view the book's author and genre
 - As a user, I want to add notes to a selected book
 - As a user, I want to remove notes from a selected book
+- As a user, I want to see the list of books in my bookshelf
+- As a user, I want to see the list of notes in a selected book
