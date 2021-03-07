@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 // modelled class after JsonReader class in sample app
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
-// Represents a reader that reads budget system from JSON data stored in file
+// Represents a reader that reads bookshelf from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -54,7 +54,7 @@ public class JsonReader {
     // MODIFIES: bookshelf
     // EFFECTS: parses books from JSON object and adds them to bookshelf
     private void addBooks(Bookshelf bookshelf, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("books");
+        JSONArray jsonArray = jsonObject.getJSONArray("bookList");
         for (Object json : jsonArray) {
             JSONObject nextBook = (JSONObject) json;
             addBook(bookshelf, nextBook);

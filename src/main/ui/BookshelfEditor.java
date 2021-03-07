@@ -6,20 +6,22 @@ import model.Notes;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 // Represents a bookshelf application
 // Modelled parts of code from TellerApp in sample application
 public class BookshelfEditor {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/bookshelf.json";
     private Bookshelf bookShelf;
     private Scanner input;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
     //EFFECTS: runs the bookshelf app
-    public BookshelfEditor() {
+    public BookshelfEditor() throws FileNotFoundException {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runBookshelf();
@@ -58,8 +60,10 @@ public class BookshelfEditor {
         System.out.println("\nSelect from:");
         System.out.println("\ta = add a book");
         System.out.println("\tr = remove a book");
-        System.out.println("\ts = select a book");
+        System.out.println("\tc = choose a book");
         System.out.println("\tv = view all books");
+        System.out.println("\ts = save to file");
+        System.out.println("\tl = load from file");
         System.out.println("\tq = quit");
     }
 
@@ -73,15 +77,41 @@ public class BookshelfEditor {
             case "r":
                 removeBook();
                 break;
-            case "s":
+            case "c":
                 selectBook();
                 break;
             case "v" :
                 viewBooks();
                 break;
+            case "s" :
+                saveBookshelf();
+                break;
+            case "l" :
+                loadBookshelf();
+                break;
             default:
                 System.out.println("Selection not valid");
                 break;
+        }
+    }
+
+    private void loadBookshelf() {
+        try {
+            bookShelf = jsonReader.read();
+            System.out.println("Loaded " + bookShelf.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    private void saveBookshelf() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(bookShelf);
+            jsonWriter.close();
+            System.out.println("Saved " + bookShelf.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 
