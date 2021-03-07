@@ -8,7 +8,6 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 // Represents a bookshelf application
@@ -95,6 +94,8 @@ public class BookshelfEditor {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: loads bookshelf from file
     private void loadBookshelf() {
         try {
             bookShelf = jsonReader.read();
@@ -104,6 +105,7 @@ public class BookshelfEditor {
         }
     }
 
+    //EFFECTS: saves bookshelf to file
     private void saveBookshelf() {
         try {
             jsonWriter.open();
@@ -115,6 +117,8 @@ public class BookshelfEditor {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: shows user the book titles of the books in the bookshelf
     private void viewBooks() {
         for (Book book : bookShelf.getBookList()) {
             System.out.println(book.getTitle());
@@ -204,7 +208,8 @@ public class BookshelfEditor {
     }
 
     //MODIFIES: this
-    //EFFECTS: tells the user who is the author and what is the genre of the selected book
+    //EFFECTS: shows the user who is the author, what is the genre of the selected book,
+    // and the heading of notes and notes content
     private void viewBook(Book selectedBook) {
         String title = selectedBook.getTitle();
         String genre = selectedBook.getGenre();

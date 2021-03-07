@@ -28,3 +28,5 @@ The intended audience includes avid readers and anyone who would like to keep tr
 - As a user, I want to remove notes from a selected book
 - As a user, I want to see the list of books in my bookshelf
 - As a user, I want to see the list of notes in a selected book
+- As a user, I want to save my bookshelf to file
+- As a user, I want to load my bookshelf from file

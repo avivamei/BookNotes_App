@@ -1,9 +1,17 @@
 {
-    "name": "f\\",
-    "bookList": [{
-        "notes": [],
-        "author": "a",
-        "genre": "a",
-        "title": "a"
-    }]
+    "name": "lol",
+    "bookList": [
+        {
+            "notes": [],
+            "author": "a",
+            "genre": "a",
+            "title": "a"
+        },
+        {
+            "notes": [],
+            "author": "s",
+            "genre": "s",
+            "title": "s"
+        }
+    ]
 }
