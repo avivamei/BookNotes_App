@@ -2,25 +2,25 @@
     "name": "my bookshelf",
     "bookList": [
         {
+            "notes": [{
+                "notes": "notes1",
+                "heading": "summary"
+            }],
+            "author": "author1",
+            "genre": "genre1",
+            "title": "book1"
+        },
+        {
             "notes": [
                 {
-                    "notes": "notes1",
-                    "heading": "summary"
+                    "notes": "notes3",
+                    "heading": "characters"
                 },
                 {
                     "notes": "notes2",
                     "heading": "quotes"
                 }
             ],
-            "author": "author1",
-            "genre": "genre1",
-            "title": "book1"
-        },
-        {
-            "notes": [{
-                "notes": "notes3",
-                "heading": "characters"
-            }],
             "author": "author2",
             "genre": "genre2",
             "title": "book2"

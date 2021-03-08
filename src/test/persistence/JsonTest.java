@@ -14,10 +14,11 @@ public class JsonTest {
 
     protected Book book1;
     protected Notes summary;
-    protected Notes quotes;
 
     protected Book book2;
     protected Notes characters;
+    protected Notes quotes;
+
 
     @BeforeEach
     public void setUp() {
@@ -27,11 +28,12 @@ public class JsonTest {
         summary = new Notes("summary", "notes1");
         quotes = new Notes("quotes", "notes2");
         book1.addNotes(summary);
-        book1.addNotes(quotes);
 
         book2 = new Book("book2", "author2", "genre2");
         characters = new Notes("characters", "notes3");
+        quotes = new Notes("quotes", "notes2");
         book2.addNotes(characters);
+        book2.addNotes(quotes);
 
         bookshelf.addBook(book1);
         bookshelf.addBook(book2);

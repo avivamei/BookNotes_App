@@ -9,10 +9,6 @@
         {
           "heading": "summary",
           "notes": "notes1"
-        },
-        {
-          "heading": "quotes",
-          "notes": "notes2"
         }
       ]
     },
@@ -24,6 +20,10 @@
         {
           "heading": "characters",
           "notes": "notes3"
+        },
+        {
+          "heading": "quotes",
+          "notes": "notes2"
         }
         ]
     }

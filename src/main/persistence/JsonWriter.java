@@ -7,8 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-// modelled after JsonWriter class in sample application
-// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+// modelled after JsonWriter class in JsonSerializationDemo
 
 // Represents a writer that writes JSON representation of bookshelf to file
 public class JsonWriter {

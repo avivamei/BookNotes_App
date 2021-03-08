@@ -43,7 +43,6 @@ public class JsonReaderTest extends JsonTest{
             assertEquals(bookshelf.getName(), actualBookshelf.getName());
             checkBooks(bookshelf.getBookList(), actualBookshelf.getBookList());
         } catch (IOException exception) {
-            exception.printStackTrace();
             fail("Couldn't read from file");
         }
     }
