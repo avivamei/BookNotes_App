@@ -100,8 +100,12 @@ public class GUI extends JFrame implements ActionListener {
             writer.write(bookshelf);
             writer.close();
         } else if (e.getActionCommand().equals("addBookButton")) {
-            new AddBookPopUp();
+            new AddBookPopUp(this);
         }
+    }
+
+    public Bookshelf getBookshelf() {
+        return bookshelf;
     }
 
 }
