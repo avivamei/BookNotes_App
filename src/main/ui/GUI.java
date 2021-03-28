@@ -97,6 +97,7 @@ public class GUI extends JFrame implements ActionListener {
             try {
                 bookshelf = reader.read();
                 refreshContent(contentPanel);
+                contentPanel.revalidate();
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
