@@ -9,6 +9,8 @@ public class AddNotes extends JPanel {
     private SelectBook selectedBook;
     private JTextField heading;
     private JTextField notes;
+    private ImageIcon icon = createImageIcon("images/pencil.png");
+
 
     public AddNotes(SelectBook selectedBook) {
         this.selectedBook = selectedBook;
@@ -49,7 +51,7 @@ public class AddNotes extends JPanel {
     // EFFECTS: adds note with specified heading and notes
     private void addNote(JTextField heading, JTextField notes, JPanel contentPanel) {
         int input = JOptionPane.showOptionDialog(null, contentPanel, "New Book",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon, null, null);
         String newHeading = heading.getText();
         String newNotes = notes.getText();
         if (input == JOptionPane.OK_OPTION) {
@@ -57,5 +59,13 @@ public class AddNotes extends JPanel {
             selectedBook.getBook().addNotes(note);
             selectedBook.refreshNotes();
         }
+    }
+
+    // EFFECTS: return ImageIcon of specified path
+    private ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = AddBook.class.getResource(path);
+        ImageIcon icon = new ImageIcon(imgURL);
+        Image scaleImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+        return new ImageIcon(scaleImage);
     }
 }

@@ -4,12 +4,14 @@ import model.Book;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.ImageIcon;
 
 public class AddBook extends JPanel {
     private GUI gui;
     private JTextField title;
     private JTextField author;
     private JTextField genre;
+    private ImageIcon icon = createImageIcon("images/book.png");
 
     public AddBook(GUI gui) {
         this.gui = gui;
@@ -54,7 +56,7 @@ public class AddBook extends JPanel {
     // EFFECTS: adds book with specified title, author, genre
     private void addBook(JTextField title, JTextField author, JTextField genre, JPanel contentPanel) {
         int input = JOptionPane.showOptionDialog(null, contentPanel, "New Book",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon, null, null);
         String newTitle = title.getText();
         String newAuthor = author.getText();
         String newGenre = genre.getText();
@@ -63,5 +65,13 @@ public class AddBook extends JPanel {
             gui.getBookshelf().addBook(b);
             gui.refreshContent();
         }
+    }
+
+    // EFFECTS: return ImageIcon of specified path
+    private ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = AddBook.class.getResource(path);
+        ImageIcon icon = new ImageIcon(imgURL);
+        Image scaleImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+        return new ImageIcon(scaleImage);
     }
 }
