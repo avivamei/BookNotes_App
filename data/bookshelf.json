@@ -12,6 +12,18 @@
             "author": "s",
             "genre": "a",
             "title": "f"
+        },
+        {
+            "notes": [],
+            "author": "a",
+            "genre": "a",
+            "title": "a"
+        },
+        {
+            "notes": [],
+            "author": "f",
+            "genre": "d",
+            "title": "s"
         }
     ]
 }

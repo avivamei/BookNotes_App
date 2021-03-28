@@ -64,8 +64,7 @@ public class GUI extends JFrame implements ActionListener {
     }
 
     public void refreshContent(JPanel contentPanel) {
-        contentPanel.setLayout(new GridLayout(
-                bookshelf.getBookList().size(), 1, 0, 30));
+        contentPanel.removeAll();
         for (Book b : bookshelf.getBookList()) {
             BookPanel bookPanel = new BookPanel(b, this);
             contentPanel.add(bookPanel);
