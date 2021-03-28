@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddBookPopUp extends JPanel implements ActionListener {
+public class AddBookPopUp extends JPanel {
     private GUI gui;
     private JTextField title;
     private JTextField author;
@@ -23,7 +23,6 @@ public class AddBookPopUp extends JPanel implements ActionListener {
 
         add(new JLabel("New Book"), BorderLayout.PAGE_START);
         add(content(), BorderLayout.CENTER);
-        add(options(), BorderLayout.PAGE_END);
     }
 
     private JPanel content() {
@@ -50,36 +49,6 @@ public class AddBookPopUp extends JPanel implements ActionListener {
         return contentPanel;
     }
 
-    private JPanel options() {
-        JPanel optionsPanel = new JPanel();
-
-        JButton addBook = new JButton("Add Book");
-        addBook.setActionCommand("addBookButton");
-        addBook.addActionListener(this);
-
-        JButton cancel = new JButton("Cancel");
-        cancel.setActionCommand("cancelButton");
-        cancel.addActionListener(this);
-
-        optionsPanel.add(addBook);
-        optionsPanel.add(cancel);
-
-        return optionsPanel;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("addBookButton")) {
-            addBook();
-        } else if (e.getActionCommand().equals("cancelButton")) {
-            cancel();
-        }
-    }
-
-    private void cancel() {
-
-    }
-
     private void addBook(JTextField title, JTextField author, JTextField genre, JPanel contentPanel) {
         int input = JOptionPane.showOptionDialog(null, contentPanel, "New Book",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
@@ -89,6 +58,7 @@ public class AddBookPopUp extends JPanel implements ActionListener {
         if (input == JOptionPane.OK_OPTION) {
             Book b = new Book(newTitle, newAuthor, newGenre);
             gui.getBookshelf().addBook(b);
+            gui.refreshContent(gui.getContentPanel());
         }
     }
 }

@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class GUI extends JFrame implements ActionListener {
     private Bookshelf bookshelf;
+    private JPanel contentPanel;
 
     public GUI() {
         super("Bookshelf");
@@ -55,12 +56,21 @@ public class GUI extends JFrame implements ActionListener {
     }
 
     private JPanel bookshelfContentPanel() {
-        JPanel panel = new JPanel();
+        contentPanel = new JPanel();
+
+        refreshContent(contentPanel);
+
+        return contentPanel;
+    }
+
+    public void refreshContent(JPanel contentPanel) {
+        contentPanel.setLayout(new GridLayout(
+                bookshelf.getBookList().size(), 1, 0, 30));
         for (Book b : bookshelf.getBookList()) {
             BookPanel bookPanel = new BookPanel(b, this);
-            panel.add(bookPanel);
+            contentPanel.add(bookPanel);
         }
-        return panel;
+        contentPanel.setVisible(true);
     }
 
     private JPanel bookshelfFooterPanel() {
@@ -86,7 +96,8 @@ public class GUI extends JFrame implements ActionListener {
         if (e.getActionCommand().equals("loadButton")) {
             JsonReader reader = new JsonReader("./data/bookshelf.json");
             try {
-                reader.read();
+                bookshelf = reader.read();
+                refreshContent(contentPanel);
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
@@ -106,6 +117,10 @@ public class GUI extends JFrame implements ActionListener {
 
     public Bookshelf getBookshelf() {
         return bookshelf;
+    }
+
+    public JPanel getContentPanel() {
+        return contentPanel;
     }
 
 }
