@@ -1,11 +1,9 @@
-package ui;
+package ui.gui;
 
 import model.Book;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class AddBook extends JPanel {
     private GUI gui;

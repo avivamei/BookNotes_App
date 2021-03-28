@@ -1,7 +1,6 @@
-package ui;
+package ui.gui;
 
 import model.Book;
-import model.Bookshelf;
 
 import javax.swing.*;
 import java.awt.*;

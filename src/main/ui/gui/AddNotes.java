@@ -1,4 +1,4 @@
-package ui;
+package ui.gui;
 
 import model.Notes;
 
@@ -6,12 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AddNotes extends JPanel {
-    private BookPanel bookPanel;
+    private SelectBook selectedBook;
     private JTextField heading;
     private JTextField notes;
 
-    public AddNotes(BookPanel bookPanel) {
-        this.bookPanel = bookPanel;
+    public AddNotes(SelectBook selectedBook) {
+        this.selectedBook = selectedBook;
         initializeGraphics();
     }
 
@@ -24,7 +24,7 @@ public class AddNotes extends JPanel {
 
     private JPanel content() {
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new GridLayout(3, 2));
+        contentPanel.setLayout(new GridLayout(2, 2));
 
         JLabel headingLabel = new JLabel("Heading: ");
         JLabel notesLabel = new JLabel("Note: ");
@@ -42,15 +42,15 @@ public class AddNotes extends JPanel {
         return contentPanel;
     }
 
-    private void addBook(JTextField title, JTextField author, JPanel contentPanel) {
+    private void addBook(JTextField heading, JTextField notes, JPanel contentPanel) {
         int input = JOptionPane.showOptionDialog(null, contentPanel, "New Book",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-        String newHeading = title.getText();
-        String newNotes = author.getText();
+        String newHeading = heading.getText();
+        String newNotes = notes.getText();
         if (input == JOptionPane.OK_OPTION) {
             Notes note = new Notes(newHeading, newNotes);
-       //     bookPanel.getNotes().addBook(note);
-     //       bookPanel.refreshContent(gui.getContentPanel());
+            selectedBook.getBook().addNotes(note);
+            selectedBook.refreshNotes();
         }
     }
 }
