@@ -16,6 +16,8 @@ public class AddBook extends JPanel {
         initializeGraphics();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates new Border Layout, adds label and content panel
     private void initializeGraphics() {
         setLayout(new BorderLayout());
 
@@ -23,6 +25,7 @@ public class AddBook extends JPanel {
         add(content(), BorderLayout.CENTER);
     }
 
+    // EFFECTS: creates panel with 3 labels and their corresponding text fields
     private JPanel content() {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new GridLayout(3, 2));
@@ -47,6 +50,8 @@ public class AddBook extends JPanel {
         return contentPanel;
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds book with specified title, author, genre
     private void addBook(JTextField title, JTextField author, JTextField genre, JPanel contentPanel) {
         int input = JOptionPane.showOptionDialog(null, contentPanel, "New Book",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);

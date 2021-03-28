@@ -2,13 +2,11 @@ package ui.gui;
 
 import model.Book;
 import model.Notes;
-import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 
 public class SelectBook extends JFrame implements ActionListener {
     private Book book;
@@ -21,8 +19,11 @@ public class SelectBook extends JFrame implements ActionListener {
         initializeGraphics();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates new Border Layout, adds header and content panels
     private void initializeGraphics() {
         setLayout(new BorderLayout());
+        setMinimumSize(new Dimension(400, 500));
 
         add(header(), BorderLayout.PAGE_START);
         add(content(), BorderLayout.CENTER);
@@ -31,14 +32,18 @@ public class SelectBook extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    // EFFECTS: creates new JScrollPane for Notes
     private JScrollPane content() {
         notesPanel = new JPanel();
+        notesPanel.setLayout(new BoxLayout(notesPanel, BoxLayout.Y_AXIS));
 
         refreshNotes();
 
         return new JScrollPane(notesPanel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: refreshes content panel to display changes
     public void refreshNotes() {
         notesPanel.removeAll();
         for (Notes n : book.getNotesList()) {
@@ -48,6 +53,7 @@ public class SelectBook extends JFrame implements ActionListener {
         notesPanel.revalidate();
     }
 
+    // EFFECTS: create panel with book title, author, genre, and add note button
     private JPanel header() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -63,6 +69,8 @@ public class SelectBook extends JFrame implements ActionListener {
         return panel;
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates new add notes pop up panel
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("addNoteButton")) {
@@ -70,6 +78,7 @@ public class SelectBook extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECTS: gets book
     public Book getBook() {
         return book;
     }

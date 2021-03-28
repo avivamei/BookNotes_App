@@ -18,18 +18,19 @@ public class BookPanel extends JPanel implements ActionListener {
         initializeGraphics();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates book title label, book content panel, book options panel
     private void initializeGraphics() {
         JLabel bookTitle = new JLabel(book.getTitle());
         add(bookTitle, BorderLayout.LINE_START);
 
-        JPanel bookContent = setUpContent();
-        add(bookContent, BorderLayout.CENTER);
+        add(setUpContent(), BorderLayout.CENTER);
 
-        JPanel bookOptions = setUpOptions();
-        add(bookOptions, BorderLayout.LINE_END);
+        add(setUpOptions(), BorderLayout.LINE_END);
 
     }
 
+    // EFFECTS: sets up remove and select buttons
     private JPanel setUpOptions() {
         JPanel optionsPanel = new JPanel();
         optionsPanel.setLayout(new GridLayout(2, 1));
@@ -47,6 +48,7 @@ public class BookPanel extends JPanel implements ActionListener {
         return optionsPanel;
     }
 
+    // EFFECTS: sets up author and genre labels
     private JPanel setUpContent() {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new GridLayout(2, 1));
@@ -57,6 +59,9 @@ public class BookPanel extends JPanel implements ActionListener {
         return contentPanel;
     }
 
+    // MODIFIES: this
+    // EFFECTS: if selectBookButton is pressed, creates new SelectBook;
+    // if removeBookButton is pressed, delete book from bookshelf
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("selectBookButton")) {

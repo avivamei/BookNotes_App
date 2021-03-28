@@ -4,8 +4,6 @@ import model.Notes;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class NotesPanel extends JPanel {
     private Notes notes;
@@ -17,11 +15,13 @@ public class NotesPanel extends JPanel {
         initializeGraphics();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds heading and notes labels to panel
     private void initializeGraphics() {
+        setLayout(new GridLayout(2, 1));
         JLabel heading = new JLabel(notes.getHeading());
         JLabel note = new JLabel(notes.getNotes());
         add(heading, BorderLayout.PAGE_START);
         add(note, BorderLayout.PAGE_END);
-
     }
 }

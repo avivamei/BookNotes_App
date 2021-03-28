@@ -1,7 +1,10 @@
 {
     "name": "Bookshelf",
     "bookList": [{
-        "notes": [],
+        "notes": [{
+            "notes": "There is a Boy named Harry Potter",
+            "heading": "Summary"
+        }],
         "author": "jk rowling",
         "genre": "fantasy",
         "title": "harry potter"

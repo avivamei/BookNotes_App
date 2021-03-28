@@ -12,10 +12,12 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// Represents the Bookshelf panel
 public class GUI extends JFrame implements ActionListener {
     private Bookshelf bookshelf;
     private JPanel contentPanel;
 
+    // EFFECTS: creates a JFrame called "Bookshelf"
     public GUI() {
         super("Bookshelf");
         initializeGraphics();
@@ -25,11 +27,14 @@ public class GUI extends JFrame implements ActionListener {
         new GUI();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes JFrame, adds header, content, and footer panels
     private void initializeGraphics() {
         bookshelf = new Bookshelf("Bookshelf");
 
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setMinimumSize(new Dimension(500, 600));
 
         add(bookshelfHeaderPanel(), BorderLayout.PAGE_START);
         add(bookshelfContentPanel(), BorderLayout.CENTER);
@@ -39,6 +44,7 @@ public class GUI extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    // EFFECTS: creates header panel with Add Book button
     private JPanel bookshelfHeaderPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -55,14 +61,18 @@ public class GUI extends JFrame implements ActionListener {
         return panel;
     }
 
+    // EFFECTS: creates content panel with Books
     private JPanel bookshelfContentPanel() {
         contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
         refreshContent();
 
         return contentPanel;
     }
 
+    // MODIFIES: this
+    // EFFECTS: refreshes content panel to display changes
     public void refreshContent() {
         contentPanel.removeAll();
         for (Book b : bookshelf.getBookList()) {
@@ -72,6 +82,7 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.revalidate();
     }
 
+    // EFFECTS: creates footer panel with load and save buttons
     private JPanel bookshelfFooterPanel() {
         JPanel panel = new JPanel();
 
@@ -90,7 +101,9 @@ public class GUI extends JFrame implements ActionListener {
     }
 
     @Override
-    //This is the method that is called when the the JButton btn is clicked
+    // MODIFIES: this
+    // EFFECTS: if loadButton is pressed, load previous bookshelf; if saveButton is pressed, save current bookshelf;
+    // if addBookButton is pressed, create new add book panel
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("loadButton")) {
             JsonReader reader = new JsonReader("./data/bookshelf.json");
@@ -116,14 +129,12 @@ public class GUI extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECTS: returns bookshelf
     public Bookshelf getBookshelf() {
         return bookshelf;
     }
 
-    public JPanel getContentPanel() {
-        return contentPanel;
-    }
-
+    // EFFECTS: plays beep sound
     private void beep() {
         Toolkit.getDefaultToolkit().beep();
     }

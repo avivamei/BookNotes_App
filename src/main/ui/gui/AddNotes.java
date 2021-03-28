@@ -15,6 +15,8 @@ public class AddNotes extends JPanel {
         initializeGraphics();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds note label and content panel
     private void initializeGraphics() {
         setLayout(new BorderLayout());
 
@@ -22,6 +24,7 @@ public class AddNotes extends JPanel {
         add(content(), BorderLayout.CENTER);
     }
 
+    // EFFECTS: creates content panel with heading and note labels and text fields
     private JPanel content() {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new GridLayout(2, 2));
@@ -37,12 +40,14 @@ public class AddNotes extends JPanel {
         contentPanel.add(notesLabel);
         contentPanel.add(notes);
 
-        addBook(heading, notes, contentPanel);
+        addNote(heading, notes, contentPanel);
 
         return contentPanel;
     }
 
-    private void addBook(JTextField heading, JTextField notes, JPanel contentPanel) {
+    // MODIFIES: this
+    // EFFECTS: adds note with specified heading and notes
+    private void addNote(JTextField heading, JTextField notes, JPanel contentPanel) {
         int input = JOptionPane.showOptionDialog(null, contentPanel, "New Book",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
         String newHeading = heading.getText();
