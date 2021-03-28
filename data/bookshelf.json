@@ -1,29 +1,9 @@
 {
     "name": "Bookshelf",
-    "bookList": [
-        {
-            "notes": [],
-            "author": "s",
-            "genre": "s",
-            "title": "s"
-        },
-        {
-            "notes": [],
-            "author": "s",
-            "genre": "a",
-            "title": "f"
-        },
-        {
-            "notes": [],
-            "author": "a",
-            "genre": "a",
-            "title": "a"
-        },
-        {
-            "notes": [],
-            "author": "f",
-            "genre": "d",
-            "title": "s"
-        }
-    ]
+    "bookList": [{
+        "notes": [],
+        "author": "jk rowling",
+        "genre": "fantasy",
+        "title": "harry potter"
+    }]
 }

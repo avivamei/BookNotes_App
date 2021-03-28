@@ -7,13 +7,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddBookPopUp extends JPanel {
+public class AddBook extends JPanel {
     private GUI gui;
     private JTextField title;
     private JTextField author;
     private JTextField genre;
 
-    public AddBookPopUp(GUI gui) {
+    public AddBook(GUI gui) {
         this.gui = gui;
         initializeGraphics();
     }
@@ -58,7 +58,7 @@ public class AddBookPopUp extends JPanel {
         if (input == JOptionPane.OK_OPTION) {
             Book b = new Book(newTitle, newAuthor, newGenre);
             gui.getBookshelf().addBook(b);
-            gui.refreshContent(gui.getContentPanel());
+            gui.refreshContent();
         }
     }
 }

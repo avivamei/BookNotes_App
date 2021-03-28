@@ -58,18 +58,18 @@ public class GUI extends JFrame implements ActionListener {
     private JPanel bookshelfContentPanel() {
         contentPanel = new JPanel();
 
-        refreshContent(contentPanel);
+        refreshContent();
 
         return contentPanel;
     }
 
-    public void refreshContent(JPanel contentPanel) {
+    public void refreshContent() {
         contentPanel.removeAll();
         for (Book b : bookshelf.getBookList()) {
             BookPanel bookPanel = new BookPanel(b, this);
             contentPanel.add(bookPanel);
         }
-        contentPanel.setVisible(true);
+        contentPanel.revalidate();
     }
 
     private JPanel bookshelfFooterPanel() {
@@ -95,15 +95,16 @@ public class GUI extends JFrame implements ActionListener {
         if (e.getActionCommand().equals("loadButton")) {
             JsonReader reader = new JsonReader("./data/bookshelf.json");
             try {
+                beep();
                 bookshelf = reader.read();
-                refreshContent(contentPanel);
-                contentPanel.revalidate();
+                refreshContent();
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
         } else if (e.getActionCommand().equals("saveButton")) {
             JsonWriter writer = new JsonWriter("./data/bookshelf.json");
             try {
+                beep();
                 writer.open();
             } catch (FileNotFoundException exception) {
                 exception.printStackTrace();
@@ -111,7 +112,7 @@ public class GUI extends JFrame implements ActionListener {
             writer.write(bookshelf);
             writer.close();
         } else if (e.getActionCommand().equals("addBookButton")) {
-            new AddBookPopUp(this);
+            new AddBook(this);
         }
     }
 
@@ -121,6 +122,10 @@ public class GUI extends JFrame implements ActionListener {
 
     public JPanel getContentPanel() {
         return contentPanel;
+    }
+
+    private void beep() {
+        Toolkit.getDefaultToolkit().beep();
     }
 
 }

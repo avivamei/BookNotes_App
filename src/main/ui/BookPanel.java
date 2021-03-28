@@ -1,6 +1,7 @@
 package ui;
 
 import model.Book;
+import model.Bookshelf;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,5 +60,11 @@ public class BookPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("selectBookButton")) {
+            new SelectBook(this, this.book);
+        } else if (e.getActionCommand().equals("removeBookButton")) {
+            gui.getBookshelf().removeBook(book.getTitle());
+            gui.refreshContent();
+        }
     }
 }
