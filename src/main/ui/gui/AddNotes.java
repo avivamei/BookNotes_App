@@ -1,5 +1,6 @@
 package ui.gui;
 
+import exceptions.StringTooShortException;
 import model.Notes;
 
 import javax.swing.*;
@@ -55,7 +56,12 @@ public class AddNotes extends JPanel {
         String newHeading = heading.getText();
         String newNotes = notes.getText();
         if (input == JOptionPane.OK_OPTION) {
-            Notes note = new Notes(newHeading, newNotes);
+            Notes note = null;
+            try {
+                note = new Notes(newHeading, newNotes);
+            } catch (StringTooShortException e) {
+                System.out.println("Heading and Notes must be non-zero in length");
+            }
             selectedBook.getBook().addNotes(note);
             selectedBook.refreshNotes();
         }

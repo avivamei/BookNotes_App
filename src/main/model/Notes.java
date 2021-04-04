@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.StringTooShortException;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -10,19 +11,31 @@ public class Notes implements Writable {
 
     //REQUIRES: heading and notes are non-zero in length
     //EFFECTS: constructs a note with a heading and content
-    public Notes(String heading, String notes) {
-        this.heading = heading;
-        this.notes = notes;
+    public Notes(String heading, String notes) throws StringTooShortException {
+        if (!heading.isEmpty() && !notes.isEmpty()) {
+            this.heading = heading;
+            this.notes = notes;
+        } else {
+            throw new StringTooShortException();
+        }
     }
 
     //EFFECTS: sets the heading of a note
-    public void setHeading(String heading) {
-        this.heading = heading;
+    public void setHeading(String heading) throws StringTooShortException {
+        if (!heading.isEmpty()) {
+            this.heading = heading;
+        } else {
+            throw new StringTooShortException();
+        }
     }
 
     //EFFECTS: sets the content of a note
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setNotes(String notes) throws StringTooShortException {
+        if (!notes.isEmpty()) {
+            this.notes = notes;
+        } else {
+            throw new StringTooShortException();
+        }
     }
 
     //EFFECTS: returns the heading that the note is a part of

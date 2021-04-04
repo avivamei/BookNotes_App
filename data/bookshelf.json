@@ -1,12 +1,23 @@
 {
     "name": "Bookshelf",
-    "bookList": [{
-        "notes": [{
-            "notes": "There is a Boy named Harry Potter",
-            "heading": "Summary"
-        }],
-        "author": "jk rowling",
-        "genre": "fantasy",
-        "title": "harry potter"
-    }]
+    "bookList": [
+        {
+            "notes": [{
+                "notes": "There is a Boy named Harry Potter",
+                "heading": "Summary"
+            }],
+            "author": "jk rowling",
+            "genre": "fantasy",
+            "title": "harry potter"
+        },
+        {
+            "notes": [{
+                "notes": "stuff",
+                "heading": "summary"
+            }],
+            "author": "a",
+            "genre": "a",
+            "title": "a"
+        }
+    ]
 }

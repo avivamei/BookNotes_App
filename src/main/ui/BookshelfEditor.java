@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.StringTooShortException;
 import model.Book;
 import model.Bookshelf;
 import model.Notes;
@@ -242,7 +243,12 @@ public class BookshelfEditor {
         System.out.println("Enter the notes");
         String notes = input.nextLine();
 
-        Notes n = new Notes(heading, notes);
+        Notes n = null;
+        try {
+            n = new Notes(heading, notes);
+        } catch (StringTooShortException e) {
+            System.out.println("Heading and Notes must be non-zero in length");
+        }
         selectedBook.addNotes(n);
     }
 

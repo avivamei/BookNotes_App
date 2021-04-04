@@ -1,6 +1,7 @@
 package persistence;
 
 
+import exceptions.StringTooShortException;
 import model.Book;
 import model.Bookshelf;
 import model.Notes;
@@ -87,7 +88,12 @@ public class JsonReader {
     private void addNote(Book nextBook, JSONObject jsonObject) {
         String heading = jsonObject.getString("heading");
         String notes = jsonObject.getString("notes");
-        Notes note = new Notes(heading, notes);
+        Notes note = null;
+        try {
+            note = new Notes(heading, notes);
+        } catch (StringTooShortException e) {
+            System.out.println("Heading and Notes must be non-zero in length");
+        }
         nextBook.addNotes(note);
     }
 }
