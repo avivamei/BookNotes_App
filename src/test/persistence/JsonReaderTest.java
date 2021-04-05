@@ -1,7 +1,6 @@
 package persistence;
 
 import exceptions.StringTooShortException;
-import model.Book;
 import model.Bookshelf;
 import org.junit.jupiter.api.Test;
 

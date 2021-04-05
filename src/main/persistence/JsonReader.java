@@ -88,8 +88,7 @@ public class JsonReader {
     private void addNote(Book nextBook, JSONObject jsonObject) throws StringTooShortException {
         String heading = jsonObject.getString("heading");
         String notes = jsonObject.getString("notes");
-        Notes note = null;
-        note = new Notes(heading, notes);
+        Notes note = new Notes(heading, notes);
         nextBook.addNotes(note);
     }
 }
