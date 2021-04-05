@@ -40,3 +40,10 @@ The intended audience includes avid readers and anyone who would like to keep tr
 	- setHeading(String heading)
 	- setNotes(String notes)
 - Tested robust design in NotesTest
+
+**Task 3**
+- Improving Coupling 
+    - Book and Bookshelf Class have methods in common
+    - AddNotes and AddBook have methods in common
+- Improving Cohesion
+    - Split Bookshelf Editor into multiple classes
