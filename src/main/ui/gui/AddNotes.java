@@ -7,10 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AddNotes extends JPanel {
-    private SelectBook selectedBook;
-    private JTextField heading;
-    private JTextField notes;
-    private ImageIcon icon = createImageIcon("images/pencil.png");
+    private final SelectBook selectedBook;
+    private final ImageIcon icon = createImageIcon();
 
 
     public AddNotes(SelectBook selectedBook) {
@@ -35,8 +33,8 @@ public class AddNotes extends JPanel {
         JLabel headingLabel = new JLabel("Heading: ");
         JLabel notesLabel = new JLabel("Note: ");
 
-        heading = new JTextField();
-        notes = new JTextField();
+        JTextField heading = new JTextField();
+        JTextField notes = new JTextField();
 
         contentPanel.add(headingLabel);
         contentPanel.add(heading);
@@ -57,8 +55,7 @@ public class AddNotes extends JPanel {
         String newNotes = notes.getText();
         if (input == JOptionPane.OK_OPTION) {
             try {
-                Notes note = null;
-                note = new Notes(newHeading, newNotes);
+                Notes note = new Notes(newHeading, newNotes);
                 selectedBook.getBook().addNotes(note);
                 selectedBook.refreshNotes();
             } catch (StringTooShortException e) {
@@ -68,8 +65,8 @@ public class AddNotes extends JPanel {
     }
 
     // EFFECTS: return ImageIcon of specified path
-    private ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = AddBook.class.getResource(path);
+    private ImageIcon createImageIcon() {
+        java.net.URL imgURL = AddBook.class.getResource("images/pencil.png");
         ImageIcon icon = new ImageIcon(imgURL);
         Image scaleImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
         return new ImageIcon(scaleImage);
