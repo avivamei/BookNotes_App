@@ -27,7 +27,7 @@ public class JsonReader {
 
     //EFFECTS: reads bookshelf from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public Bookshelf read() throws IOException {
+    public Bookshelf read() throws IOException, StringTooShortException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseBookshelf(jsonObject);
@@ -45,7 +45,7 @@ public class JsonReader {
     }
 
     // EFFECTS: parses bookshelf from JSON object and returns it
-    private Bookshelf parseBookshelf(JSONObject jsonObject) {
+    private Bookshelf parseBookshelf(JSONObject jsonObject) throws StringTooShortException {
         String name = jsonObject.getString("name");
         Bookshelf bookshelf = new Bookshelf(name);
         addBooks(bookshelf, jsonObject);
@@ -54,7 +54,7 @@ public class JsonReader {
 
     // MODIFIES: bookshelf
     // EFFECTS: parses books from JSON object and adds them to bookshelf
-    private void addBooks(Bookshelf bookshelf, JSONObject jsonObject) {
+    private void addBooks(Bookshelf bookshelf, JSONObject jsonObject) throws StringTooShortException {
         JSONArray jsonArray = jsonObject.getJSONArray("bookList");
         for (Object json : jsonArray) {
             JSONObject nextBook = (JSONObject) json;
@@ -64,7 +64,7 @@ public class JsonReader {
 
     // MODIFIES: bookshelf
     // EFFECTS: parses book from JSON object and adds it to bookshelf
-    private void addBook(Bookshelf bookshelf, JSONObject jsonObject) {
+    private void addBook(Bookshelf bookshelf, JSONObject jsonObject) throws StringTooShortException {
         String title = jsonObject.getString("title");
         String author = jsonObject.getString("author");
         String genre = jsonObject.getString("genre");
@@ -75,7 +75,7 @@ public class JsonReader {
 
     // MODIFIES: nextBook
     // EFFECTS: parses notes from JSON object and adds them to book
-    private void addNotes(Book nextBook, JSONObject jsonObject) {
+    private void addNotes(Book nextBook, JSONObject jsonObject) throws StringTooShortException {
         JSONArray jsonArray = jsonObject.getJSONArray("notes");
         for (Object json : jsonArray) {
             JSONObject nextNote = (JSONObject) json;
@@ -85,15 +85,11 @@ public class JsonReader {
 
     // MODIFIES: nextBook
     // EFFECTS: parses note from JSON object and adds it to bookshelf
-    private void addNote(Book nextBook, JSONObject jsonObject) {
+    private void addNote(Book nextBook, JSONObject jsonObject) throws StringTooShortException {
         String heading = jsonObject.getString("heading");
         String notes = jsonObject.getString("notes");
         Notes note = null;
-        try {
-            note = new Notes(heading, notes);
-        } catch (StringTooShortException e) {
-            System.out.println("Heading and Notes must be non-zero in length");
-        }
+        note = new Notes(heading, notes);
         nextBook.addNotes(note);
     }
 }

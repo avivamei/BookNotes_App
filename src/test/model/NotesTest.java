@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.StringTooShortException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,7 @@ public class NotesTest {
     private Notes testNotes;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws StringTooShortException {
         testNotes = new Notes("heading", "notes");
     }
 
@@ -21,13 +22,13 @@ public class NotesTest {
     }
 
     @Test
-    public void testSetHeading() {
+    public void testSetHeading() throws StringTooShortException {
         testNotes.setHeading("new heading");
         assertEquals("new heading", testNotes.getHeading());
     }
 
     @Test
-    public void testSetNotes() {
+    public void testSetNotes() throws StringTooShortException {
         testNotes.setNotes("new notes");
         assertEquals("new notes", testNotes.getNotes());
     }

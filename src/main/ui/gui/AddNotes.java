@@ -56,14 +56,14 @@ public class AddNotes extends JPanel {
         String newHeading = heading.getText();
         String newNotes = notes.getText();
         if (input == JOptionPane.OK_OPTION) {
-            Notes note = null;
             try {
+                Notes note = null;
                 note = new Notes(newHeading, newNotes);
+                selectedBook.getBook().addNotes(note);
+                selectedBook.refreshNotes();
             } catch (StringTooShortException e) {
-                System.out.println("Heading and Notes must be non-zero in length");
+                new AddNotes(selectedBook);
             }
-            selectedBook.getBook().addNotes(note);
-            selectedBook.refreshNotes();
         }
     }
 

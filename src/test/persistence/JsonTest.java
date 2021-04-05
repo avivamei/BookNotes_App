@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.StringTooShortException;
 import model.Book;
 import model.Bookshelf;
 import model.Notes;
@@ -21,7 +22,7 @@ public class JsonTest {
 
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws StringTooShortException {
         bookshelf = new Bookshelf("my bookshelf");
 
         book1 = new Book("book1", "author1", "genre1");

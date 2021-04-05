@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.StringTooShortException;
 import model.Book;
 import model.Bookshelf;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ public class JsonReaderTest extends JsonTest{
         try {
             Bookshelf bookshelf = reader.read();
             fail("IOException expected");
-        } catch (IOException e) {
+        } catch (IOException | StringTooShortException e) {
             // pass
         }
     }
@@ -29,7 +30,7 @@ public class JsonReaderTest extends JsonTest{
             Bookshelf emptyBookshelf = reader.read();
             assertEquals("", emptyBookshelf.getName());
             assertEquals(0, emptyBookshelf.getBookList().size());
-        } catch (IOException exception) {
+        } catch (IOException | StringTooShortException exception) {
             fail("Couldn't read from file");
         }
 
@@ -42,7 +43,7 @@ public class JsonReaderTest extends JsonTest{
             Bookshelf actualBookshelf = reader.read();
             assertEquals(bookshelf.getName(), actualBookshelf.getName());
             checkBooks(bookshelf.getBookList(), actualBookshelf.getBookList());
-        } catch (IOException exception) {
+        } catch (IOException | StringTooShortException exception) {
             fail("Couldn't read from file");
         }
     }

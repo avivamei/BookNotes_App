@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.StringTooShortException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +33,7 @@ class BookTest {
     }
 
     @Test
-    public void testAddNotes() {
+    public void testAddNotes() throws StringTooShortException {
         assertTrue(testBook.getNotesList().isEmpty());
 
         Notes note = new Notes("heading", "notes");
@@ -49,7 +50,7 @@ class BookTest {
     }
 
     @Test
-    public void testRemoveBookNotEmpty() {
+    public void testRemoveBookNotEmpty() throws StringTooShortException {
         testBook.addNotes(new Notes("heading 1", "notes 1"));
         testBook.addNotes(new Notes("heading 2", "notes 2"));
 
@@ -68,7 +69,7 @@ class BookTest {
     }
 
     @Test
-    public void testSelectCategoryNotEmpty() {
+    public void testSelectCategoryNotEmpty() throws StringTooShortException {
         Notes note1 = new Notes("heading 1", "notes 1");
         Notes note2 = new Notes("heading 2", "notes 2");
         testBook.addNotes(note1);

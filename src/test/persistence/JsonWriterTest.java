@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.StringTooShortException;
 import model.Bookshelf;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +35,7 @@ public class JsonWriterTest extends JsonTest{
             emptyBookshelf = reader.read();
             assertEquals("Empty", emptyBookshelf.getName());
             assertEquals(0, emptyBookshelf.getBookList().size());
-        } catch (IOException e) {
+        } catch (IOException | StringTooShortException e) {
             fail("Exception should not have been thrown");
         }
     }
@@ -52,7 +53,7 @@ public class JsonWriterTest extends JsonTest{
             assertEquals(bookshelf.getName(), bookshelf.getName());
             checkBooks(bookshelf.getBookList(), actualBookshelf.getBookList());
 
-        } catch (IOException e) {
+        } catch (IOException | StringTooShortException e) {
             fail("Exception should not have been thrown");
         }
     }

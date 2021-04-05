@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 // Represents the Bookshelf panel
 public class GUI extends JFrame implements ActionListener {
@@ -111,8 +110,8 @@ public class GUI extends JFrame implements ActionListener {
                 beep();
                 bookshelf = reader.read();
                 refreshContent();
-            } catch (IOException exception) {
-                exception.printStackTrace();
+            } catch (Exception exception) {
+                System.out.println("Unable to read file");
             }
         } else if (e.getActionCommand().equals("saveButton")) {
             JsonWriter writer = new JsonWriter("./data/bookshelf.json");
