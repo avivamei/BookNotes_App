@@ -22,14 +22,42 @@ public class NotesTest {
     }
 
     @Test
-    public void testSetHeading() throws StringTooShortException {
-        testNotes.setHeading("new heading");
+    public void testSetHeading() {
+        try {
+            testNotes.setHeading("new heading");
+        } catch (StringTooShortException e) {
+            fail();
+        }
         assertEquals("new heading", testNotes.getHeading());
     }
 
     @Test
-    public void testSetNotes() throws StringTooShortException {
-        testNotes.setNotes("new notes");
+    public void testSetNotes() {
+        try {
+            testNotes.setNotes("new notes");
+        } catch (StringTooShortException e) {
+            fail();
+        }
         assertEquals("new notes", testNotes.getNotes());
+    }
+
+    @Test
+    public void testSetHeadingStringLengthIsZero() {
+        try {
+            testNotes.setHeading("");
+            fail();
+        } catch (StringTooShortException e) {
+        }
+        assertEquals("heading", testNotes.getHeading());
+    }
+
+    @Test
+    public void testSetNotesStringLengthIsZero() {
+        try {
+            testNotes.setNotes("");
+            fail();
+        } catch (StringTooShortException e) {
+        }
+        assertEquals("notes", testNotes.getNotes());
     }
 }

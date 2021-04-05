@@ -7,11 +7,8 @@ import java.awt.*;
 import javax.swing.ImageIcon;
 
 public class AddBook extends JPanel {
-    private GUI gui;
-    private JTextField title;
-    private JTextField author;
-    private JTextField genre;
-    private ImageIcon icon = createImageIcon("images/book.png");
+    private final GUI gui;
+    private final ImageIcon icon = createImageIcon();
 
     public AddBook(GUI gui) {
         this.gui = gui;
@@ -36,9 +33,9 @@ public class AddBook extends JPanel {
         JLabel authorLabel = new JLabel("Author: ");
         JLabel genreLabel = new JLabel("Genre: ");
 
-        title = new JTextField();
-        author = new JTextField();
-        genre = new JTextField();
+        JTextField title = new JTextField();
+        JTextField author = new JTextField();
+        JTextField genre = new JTextField();
 
         contentPanel.add(titleLabel);
         contentPanel.add(title);
@@ -68,8 +65,8 @@ public class AddBook extends JPanel {
     }
 
     // EFFECTS: return ImageIcon of specified path
-    private ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = AddBook.class.getResource(path);
+    private ImageIcon createImageIcon() {
+        java.net.URL imgURL = AddBook.class.getResource("images/book.png");
         ImageIcon icon = new ImageIcon(imgURL);
         Image scaleImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
         return new ImageIcon(scaleImage);

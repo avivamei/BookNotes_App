@@ -10,7 +10,6 @@ public class AddNotes extends JPanel {
     private final SelectBook selectedBook;
     private final ImageIcon icon = createImageIcon();
 
-
     public AddNotes(SelectBook selectedBook) {
         this.selectedBook = selectedBook;
         initializeGraphics();

@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 
 
 public class BookPanel extends JPanel implements ActionListener {
-    private Book book;
-    private GUI gui;
+    private final Book book;
+    private final GUI gui;
 
     public BookPanel(Book book, GUI gui) {
         this.book = book;
