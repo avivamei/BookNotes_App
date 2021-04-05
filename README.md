@@ -30,3 +30,13 @@ The intended audience includes avid readers and anyone who would like to keep tr
 - As a user, I want to see the list of notes in a selected book
 - As a user, I want to save my bookshelf to file
 - As a user, I want to load my bookshelf from file
+
+##Phase 4
+
+**Task 2**
+- Implemented a robust design for the Notes class. 
+- Methods that throw StringTooShortException:
+    - Notes(String heading, String notes)
+	- setHeading(String heading)
+	- setNotes(String notes)
+- Tested robust design in NotesTest
