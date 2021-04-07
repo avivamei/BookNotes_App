@@ -43,7 +43,13 @@ The intended audience includes avid readers and anyone who would like to keep tr
 
 **Task 3**
 - Improving Coupling 
-    - Book and Bookshelf Class have methods in common
-    - AddNotes and AddBook have methods in common
+    - Book and Bookshelf Class have methods in common. Common methods could be abstracted into a new abstract class.
+        - addNotes(Notes notes) and addBook(Book book) can be abstracted into one new method in the abstract class
+        - selectNote(String heading) and selectBook(String title) can be abstracted into one new method in the abstract class
+        - removeNotes(String heading) and removeBook(String title) can be abstracted into one new method in the abstract class
+    - AddNotes and AddBook Class have methods in common. Common methods could be abstracted into a new abstract class.
+        - all methods could be abstracted into a new method in the abstract class
 - Improving Cohesion
-    - Split Bookshelf Editor into multiple classes
+    - Split BookshelfEditor into multiple classes
+        - BookshelfEditor includes the functionality for editing the bookshelf and the books
+        - Removing the functionality for editing books into a new class would improve cohesion
